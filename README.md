@@ -9,11 +9,11 @@ sf2_completion.bash
 
 This is a Bash completion script for your Symfony2 projects. It will enable auto-complete in CLI for any "console" and "symfony" scripts. It should work for sf 1.x though it has not been tested.
 
-Advantage: no need for any bundle in your project, it works out of the box, for any sf2 project.
+Advantage: no need to install any additional bundle in your project, it works out of the box, for any sf2 project.
 
 Installation: copy script content to /etc/bash_completion, or put script file into /etc/bash_completion.d/ (depending on your system architecture).
 
-Known bug: Ubuntu provides a patched version of PHP5-CLI that completely sucks and simply breaks any completion script as soon as it's called. For Ubuntu machines, the script needs to rely on PHP-CGI, so you'll have to "sudo apt-get install php-cgi" before using this script.
+Known bug: Ubuntu provides a patched version of PHP5-CLI that completely sucks and simply breaks any completion script as soon as it's called. For Ubuntu machines, the script needs to rely on PHP-CGI, so you'll have to "sudo apt-get install php-cgi" before using this script. See http://bugs.php.net/bug.php?id=53040 for more information.
 
 Your script is not called "console" nor "symfony" ? Just add yours in the last line of the completion script.
 
