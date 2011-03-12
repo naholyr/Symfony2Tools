@@ -111,3 +111,14 @@ git commit app/logs/.gitignore app/cache/.gitignore -m "Ignore logs & cache"
 
 
 echo Ready to go \!
+
+echo "Add this virtual host to your Apache ('/etc/apache2/sites-available/yoursite'):"
+echo "	<VirtualHost *:80>
+		ServerName yoursite.localhost
+		DocumentRoot "$(pwd)"
+		DirectoryIndex app_dev.php
+	</VirtualHost>"
+echo "Then enable it ('sudo a2ensite yoursite') and reload Apache ('sudo service apache2 reload')"
+echo "Add this line to your /etc/hosts:"
+echo "	127.0.0.1 yoursite.localhost"
+echo "And go to http://yoursite.localhost/app_dev.php/_configurator :)"
