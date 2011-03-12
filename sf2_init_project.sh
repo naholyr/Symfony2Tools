@@ -22,20 +22,29 @@ git add .
 git commit -a -m "Initialize new project from $SF2_PKG"
 
 echo Install vendors...
-curl https://github.com/symfony/symfony-standard/raw/master/bin/vendors.sh | bash
+git submodule add git://github.com/kriswallsmith/assetic.git vendor/assetic
+git submodule add git://github.com/symfony/symfony.git vendor/symfony
+git submodule add git://github.com/doctrine/doctrine2.git vendor/doctrine ; cd vendor/doctrine ; git reset --hard 2.0.2 ; cd ../..
+git submodule add git://github.com/doctrine/dbal.git vendor/doctrine-dbal ; cd vendor/doctrine-dbal ; git reset --hard 2.0.2 ; cd ../..
+git submodule add git://github.com/doctrine/common.git vendor/doctrine-common ; cd vendor/doctrine-common ; git reset --hard 2.0.1 ; cd ../..
+git submodule add git://github.com/swiftmailer/swiftmailer.git vendor/swiftmailer ; cd vendor/swiftmailer ; git reset --hard origin/4.1 ; cd ../..
+git submodule add git://github.com/fabpot/Twig.git vendor/twig
+git submodule add git://github.com/fabpot/Twig-extensions.git vendor/twig-extensions
+git submodule add git://github.com/symfony/zend-log.git vendor/zend-log/Zend/Log
+git submodule add git://github.com/sensio/FrameworkExtraBundle.git vendor/bundles/Sensio/Bundle/FrameworkExtraBundle
+git submodule add git://github.com/symfony/WebConfiguratorBundle.git vendor/bundles/Symfony/Bundle/WebConfiguratorBundle
 
 git add .
 git commit -a -m "Added Symfony2 standard vendors"
 
 echo Initialize assets...
 app/console assets:install web/
+git add web
+git commit -a -m "Installed assets"
 
 echo '*' > app/logs/.gitignore
 echo '*' > app/cache/.gitignore
 git add -f app/logs/.gitignore app/cache/.gitignore
 git commit app/logs/.gitignore app/cache/.gitignore -m "Ignore logs & cache"
-
-git add .
-git commit -a -m "Installed assets"
 
 echo Ready to go \!
