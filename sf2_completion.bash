@@ -5,7 +5,7 @@ _sf2_completion()
 	console=${COMP_WORDS[0]}
 	# FIX for Ubuntu:
 	if uname -a | grep -i ubuntu > /dev/null; then
-		console="php-cgi -q $console"
+		console="php-cgi -q -d register_argc_argv=On $console"
 	fi
 
 	cur=${COMP_WORDS[$COMP_CWORD]}
